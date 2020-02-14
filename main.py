@@ -55,8 +55,9 @@ os.mount(sd, '/sd')
 #c.close()
 #import utime; start = utime.ticks_us();diff = time.ticks_diff(time.ticks_us(), start); print(diff)
 i=0
+
 while (True):
-    start = utime.ticks_ms();
+    start = utime.ticks_ms()
     l76_coord = l76.coordinates()
     get_loc = l76.get_location()
 
@@ -72,16 +73,16 @@ while (True):
         print('Received Ping', i)
         lorastats = lora.stats()
         print(lorastats)
-        with open("/sd/lorastats_290120.csv", "a") as lora_file:
+        with open("/sd/lorastats_080220_S2_test4.csv", "a") as lora_file:
             lora_file.write(", ".join(str(j) for j in lorastats) + "\n")
         lora_file.close()
-        with open('/sd/gps-lora_290120.csv', 'a') as gps_lora:
+
+        with open('/sd/gps-lora_080220_S2_test4.csv', 'a') as gps_lora:
             #gps_lora.write("{} - {} - {} - {}\n".format(get_loc['latitude'], get_loc['longitude'],get_loc['altitude'], rtc.now()))
             gps_lora.write(", ".join(str(k) for k in gps_stats) + "\n")
-
         gps_lora.close()
 
-    with open('/sd/gps-record_290120.csv', 'a') as gps_file:
+    with open('/sd/gps-record__080220_S2_test4.csv', 'a') as gps_file:
         #gps_file.write("{} - {} - {} - {}\n".format(get_loc['latitude'], get_loc['longitude'],get_loc['altitude'], rtc.now()))
         gps_file.write(", ".join(str(k) for k in gps_stats) + "\n")
 
